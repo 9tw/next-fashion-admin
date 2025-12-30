@@ -48,6 +48,7 @@ export function UploadPhotoForm() {
     const files = e.target.files;
     if (files) {
       setFileCount(files.length);
+      setFiles(files);
     }
   };
 
@@ -147,8 +148,11 @@ export function UploadPhotoForm() {
 
         <div className="!p-7 p-4 sm:p-6 xl:p-10">
           <div className="mb-4 flex items-center gap-3">
-            {photos.map((photo: any) => (
-              <div className="group relative inline-block cursor-pointer">
+            {photos.map((photo: any, index: number) => (
+              <div
+                key={index}
+                className="group relative inline-block cursor-pointer"
+              >
                 <Image
                   src={photo.path}
                   width={200}
